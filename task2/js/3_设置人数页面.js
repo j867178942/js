@@ -2,11 +2,11 @@
 var a = document.getElementById("text_rel");
 var b =document.getElementById("bar");
 if(a.value >18){
-    alert("请输入6～18之间的数字")
+    alert("请输入6～18之间的数字");
     a.value =18 ;
 }
 if(a.value < 6){
-    alert("请输入6～18之间的数字")
+    alert("请输入6～18之间的数字");
     a.value =6 ;
 }
 function bar() {
@@ -32,7 +32,7 @@ function plus() {
 }
 function reduce() {
     if(a.value ==6 ||b.value ==6 ){
-        alert("请输入6～18之间的数字")
+        alert("请输入6～18之间的数字");
         a.value =6 ;
         b.value = 6;
     }else if(a.value >18){
@@ -109,14 +109,14 @@ function random() {
         }
     }
 
-    console.log("杀手" + "=" + killer_arr)
-    console.log("平民"+ "=" + civilian_arr)
+    console.log("杀手" + "=" + killer_arr);
+    console.log("平民"+ "=" + civilian_arr);
 
 
 
     all_arr =  killer_arr.concat(civilian_arr) ;  //合并
-    console.log("所有" + "=" + all_arr)
-    localStorage.setItem('所有组',JSON.stringify(all_arr))
+    console.log("所有" + "=" + all_arr);
+    localStorage.setItem('所有组',JSON.stringify(all_arr));
 
 
     for(i = get ; i > 0 ;i-- ){
@@ -135,8 +135,8 @@ function random() {
     for(i = 0; i< get ;i++){
         var li = document.createElement("li") ;
         var span = document.createElement("span") ;
-        var player1 = document.createTextNode("水   民  1人")
-        var player2 = document.createTextNode("杀   手  1人")
+        var player1 = document.createTextNode("水   民  1人");
+        var player2 = document.createTextNode("杀   手  1人");
         if(random_arr[i] === "杀手"){
             span.appendChild(player2);
             li.appendChild(span);
@@ -162,9 +162,9 @@ function random() {
     }
 
     //打印检查
-    console.log("被杀"+ "=" + be_killed)
-    console.log("被投"+ "=" + be_vote)
-    console.log("对象"+ "=" + condition)
+    console.log("被杀"+ "=" + be_killed);
+    console.log("被投"+ "=" + be_vote);
+    console.log("对象"+ "=" + condition);
 
 
     var arr_5 =killer_arr ;

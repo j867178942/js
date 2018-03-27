@@ -126,11 +126,13 @@ function clear1() {
     sessionStorage.removeItem("杀手组") ;
     sessionStorage.removeItem("平民组") ;
     sessionStorage.removeItem("civilian") ;
-    sessionStorage.removeItem("p") ;
+    sessionStorage.removeItem("condition") ;
     sessionStorage.removeItem("step") ;
     sessionStorage.removeItem("kill_rell") ;
     sessionStorage.removeItem("w");
     sessionStorage.removeItem("u") ;
+    sessionStorage.removeItem("p") ;
+    sessionStorage.removeItem("rrrsul");
     sessionStorage.removeItem("be_killed") ;
     location.href="../1_index.html" ;
 }
