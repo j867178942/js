@@ -1,0 +1,102 @@
+<!doctype html>
+<html >
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>dom操作demo</title>
+</head>
+<style>
+    .border{
+        border: 2px solid red;
+    }
+</style>
+<body>
+<div class="border">
+    <h1 id="intro"></h1>
+    <p>这个实例演示了 <b>getElementById</b> 方法!</p>
+</div>
+<script>
+    x=document.getElementById("intro");
+    x.innerHTML = "Hello World !" ;
+</script>
+
+<br>
+<div class="border">
+    <h1 class="intro">    </h1>
+    <p>这个实例演示了 <b>getElementsByClassname</b> 方法!</p>
+</div>
+<script>
+    x=document.getElementsByClassName("intro");
+    x[0].innerHTML = "Hello World !" ;
+</script>
+
+<br>
+<div class="border">
+    <h></h>
+    <!--h1是空的！！！！！！！！！-->
+    <p>这个实例演示了 <b>getElementByTagName</b> 方法!</p>
+</div>
+<script>
+    x=document.getElementsByTagName("H")[0] ;
+    x.innerHTML = "Hello World !" ;
+</script>
+
+<br>
+
+<div class="border">
+    <h1 id="wode"></h1>
+    <p>这个实例演示了
+        <b>
+            onclick
+        </b>
+        的使用方法
+    </p>
+    <button onclick="onclic()">点击显示</button>
+    <button onclick="change_back()">点击改变北京颜色</button>
+    <button onclick="change_css()">点击改变外联样式颜色</button>
+
+</div>
+<script>
+    function onclic() {
+        document.getElementById("wode").innerHTML = "Hello World !" ;
+    }
+    function change_back() {
+        document.getElementById("wode").style.backgroundColor = "red" ;
+    }
+    function change_css() {
+        document.getElementById("wode").style.cssText = "background-color:green" ;
+    }
+</script>
+<br>
+
+<div class="border">
+    <br>
+Enter your age: <input type="text" id="age" onblur="alert(this.id)">
+    <br>
+    <p>这个实例演示了
+        <b>
+            onblur
+        </b>
+        的使用方法
+    </p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
