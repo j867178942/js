@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html ng-app="sb_app"  >
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>task5</title>
+    <link rel="stylesheet" href="css/task5.css">
+    <script src="http://cdn.static.runoob.com/libs/angular.js/1.4.6/angular.min.js"></script>
+    <!--angular-->
+    <!--路由-->
+    <script src="http://apps.bdimg.com/libs/angular-route/1.3.13/angular-route.js"></script>
+</head>
+<body>
+<main>
+    <div id="sin">
+        <span id="text">
+            后台登陆入口
+        </span>
+        <div ng-controller="count" >
+            <input ng-model="$parent.name"    class="sin_1" type="text" id="sin_in" value=""   placeholder="请输入账号" >
+            <p>hello {{5+5}}</p>
+            <!--<p>hello {{name}}</p>-->
+            <input class="sin_1" ng-model = "$parent.password" type="password" id="password" value=""  placeholder="请输入密码">
+        </div>
+        <div id="on"   ng-controller="submit_ctrl"     ng-click="post_1()" >
+            登陆
+        </div>
+        <p id="p" style="color: red"></p>
+    </div>
+</main>
+<script>
+    //生命app控制器和视图交互。 控制器和数据模型交互
+    var app = angular.module('sb_app',[]);
+    app.controller('count',function ($scope) {
+        $scope.$parent.name = "" ;
+    });
+
+    app.controller('submit_ctrl',function ($scope,$http) {
+        $scope.post_1 = function () {
+            // a =    document.getElementById("sin_in").value ;
+            // console.log(  a  ) ;
+            // b = document.getElementById("password").value ;
+            // a  =   $scope.name ;
+            //  var a =  $scope.$parent.name ;
+            //  var b  = $scope.$parent.password ;
+            //  var params = {} ;
+            //  params.name = a ;
+            //  params.password = b ;
+            // console.log( a) ;
+            // console.log(b) ;
+            // console.log(params) ;
+
+
+            $http({
+                method:"POST",
+                url:"carrots-admin-ajax/a/login",
+                data: 'name=' + $scope.$parent.name + "&" + 'pwd=' +$scope.$parent.password  ,
+                header:{
+                    "Content-Type":"application/x-www-form-urlencoded"
+                }
+            })
+                .success(function (data) {
+                    console.log(data) ;
+                    alert("1231313") ;
+                })
+                .error(function (data) {
+                    console.log(data) ;
+                    alert("4555464646") ;
+                })
+
+
+
+
+            //发送请求
+
+
+            // $http.post("/post",$scope.user)
+        }
+    });
+    // angular.module("sb_app",[ngRoute])
+    //     .config(["$routeProvider",function ($routeProvider) {
+    //         $routeProvider
+    //             .when("/",{templateUrl:""})
+    //     }])
+
+
+</script>
+
+</body>
+</html>
+<!--<script>-->
+<!--function ajax() {-->
+<!--var    p = document.getElementById("p");-->
+<!--var uservalue = document.getElementById("sin_in").value,-->
+<!--passwordvalue = document.getElementById("password").value;-->
+<!--var parsam = {};-->
+<!--parsam.name = uservalue ;-->
+<!--parsam.pwd = passwordvalue ;-->
+<!--console.log(parsam);-->
+<!--//Ajax请求-->
+<!--xhr = new XMLHttpRequest() ;-->
+<!--console.log(status);-->
+<!--xhr.onreadystatechange = function () {-->
+<!--if(xhr.readyState ===4){-->
+<!--if(xhr.status===200){-->
+<!--var jsons =JSON.parse(xhr.responseText);-->
+<!--console.log(jsons);-->
+<!--if( jsons.code === 0 ){-->
+<!--p.innerHTML = "登陆成功！" ;-->
+<!--location.href= "Backstage.html" ;-->
+<!--}else {-->
+<!--p.innerHTML = "不对！";-->
+<!--}-->
+<!--}-->
+<!--}else {-->
+<!--console.log("Requse was uncessful:" +xhr.status)-->
+<!--}-->
+<!--} ;-->
+<!--xhr.open("POST","carrots-admin-ajax/a/login",true);-->
+<!--xhr.setRequestHeader(-->
+<!--"Content-Type","application/x-www-form-urlencoded"-->
+<!--);-->
+<!--xhr.send($.param(parsam));-->
+<!--}-->
+<!--</script>-->
+<!--思路：先是路由2个跳转，页面表单验证，点击摁钮1取值2整合发请求3跳转-->
+<!--取值不会，发请求不会，接收不会，-->
