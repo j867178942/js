@@ -1,0 +1,81 @@
+<div id="ooo">
+    <div id="search_bar">
+        <div class="serch">
+            <span style="color: #000" ><b>发布时间</b></span>
+            <!--<input class="input" type="text">-->
+            <input type="date" class=" input"  ng-model="startAt">
+            <span class="text1"><b>～</b></span>
+            <input type="date" class=" input" ng-model="endAt">
+            <span class="text1" style="color: #000" ><b>类型</b></span>
+
+
+
+            <select  name="type1"
+                     id="type1"
+                     ng-model="type"
+                     ng-options=" x.value as x.text for x in type_my">
+                <option value="" select hidden>全部</option>
+            </select>
+
+
+
+        </div>
+        <div class="serch2">
+            <span style="color: #000"><b>发</b></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <span style="color: #000"><b>布</b></span>
+            <!--<input class="input2" type="text">-->
+            <select  name="type1"
+                     id="type2"
+                     ng-model="status"
+                     ng-options="key as value for (key,value) in status_my">
+                <option value="" select hidden>全部</option>
+            </select>
+        </div>
+        <div class="serch3">
+            <div id="clear_all" ng-click="clear()" >清除</div>
+            <div id="search_button" ng-click="search(startAt,endAt,type,status)" >搜索</div>
+        </div>
+    </div>
+    <div id="job_list">
+        <div id="job_list_title">
+            <b>Article列表</b>
+            <div id="new_add" ui-sref="home.add">+新增</div>
+        </div>
+        <table style="width: 90%;margin: 20px 5% 0 5% ;text-align: center " >
+            <tr  style="color: #000 ; font-weight: bolder"   >
+                <td>ID</td>
+                <td>名称</td>
+                <td>类型</td>
+                <td>发布时间</td>
+                <td>修改时间</td>
+                <td>发布者</td>
+                <td>状态</td>
+                <td>操作</td>
+            </tr>
+            <tr  ng-repeat=" x in records">
+                <td>{{x.id}}</td>
+                <td>{{x.title}}</td>
+                <td>{{x.type | typeFilter}}</td>
+                <td>{{x. createAt | timeFilter }}</td>
+                <td>{{x. updateAt | timeFilter }}</td>
+                <td>{{x.author}}</td>
+                <td>{{x.status | statusFilter }}</td>
+                <td class="last_td">
+                    <div style="background-color: green;color: white;border-radius: 4px; cursor: pointer" ng-click="change(x.id)">{{x.status | lineFilter  }}</div>
+                    <div style="background-color: gray;color: white;border-radius: 4px;margin: 2px 0 2px;cursor: pointer"  ng-click="edit(x.id)">编辑</div>
+                    <div ng-click="delete(x.id)" style="background-color: red;color: white;border-radius: 4px;cursor: pointer">删除</div>
+                </td>
+            </tr>
+        </table>
+        <div id="choose_bar">
+            <div class="choose_nub" ng-click="go_to_page(1)" >首页</div>
+            <div class="choose_nub" ng-click="go_to_page_last(x)">上一页</div>
+            <div  class="choose_nub go_to_page_my " ng-repeat="x in list_button" ng-click="go_to_page(x)" ng-class="{true:'blue'}[number1]" >
+                {{x}}
+            </div>
+            <div class="choose_nub"   ng-click="go_to_page_next(x)" >下一页</div>
+            <div class="choose_nub" ng-click="go_to_page(page)">末页</div>
+            <div  ng-model="num_all">&nbsp;&nbsp;&nbsp;共{{num_all}}条</div>
+        </div>
+    </div>
+</div>

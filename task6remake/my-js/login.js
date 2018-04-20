@@ -7,10 +7,6 @@ angular.module("myApp")
                 url:'carrots-admin-ajax/a/login',
                 params:$scope.params
             }).then(function successCallback(response) {
-                console.log(response);
-                console.log(response.data);
-                console.log(response.data.code);
-                console.log(response.data.message);
                 if(response.data.code === -5003){
                     alert("账号未注册");
                 }else if(response.data.message === -5004){
@@ -18,7 +14,7 @@ angular.module("myApp")
                 }else if(response.data.name ===""||response.data.pwd ===""){
                     alert("请输入正确的用户名和密码");
                 }else if(response.data.code === 0){
-                    $state.go('hello',{reload:true});
+                    $state.go('home');
                 }else {
                     alert(response.data.message);
                 }

@@ -16,41 +16,24 @@ myApp.config(function ($stateProvider,$urlRouterProvider) {
             controller:'loginCtrl'
             //控制器
         })
-        .state('listPages',{
-            //状态：清单页
-            url:'/listPages',
+        //主页，跳转过来的 ；
+        .state('home',{
+            url:'/listPages/home',
             templateUrl:'html/home.html',
-            cantroller:'listPage'
-        })
-        .state('listPages.text',{
-            url:'/Hello',
-            templateUrl:'html/Hello.html'
-        })
-        .state('listPages.article',{
-            //文章页
-            url:'/article?type&status&pageid&starAt&endAt&total',
-            templateUrl:'html/page.html',
-            controller:'articleCtrl'
-    })
-        .state('listPages.newAdd',{
-            //新增页
-            url:'/listPages/newAdd?id',
-            templateUrl:'html/page2.html',
-            controller:'newPage'
-        })
-        .state('listPages.company',{
-            //公司页面
-            url:'listPages/company',
-            templateUrl:'html/page3.html'
-        })
-        .state('listPages.position',{
-            //职业页
-            url:'/listPages/position',
-            template:'职业页面构造中'
-        })
-        .state('hello',{
-            url:'/listPages/hello',
-            templateUrl:'html/hello.html',
             controller:'hid2'
+        })
+        .state('home.text',{
+            url:'/text',
+            templateUrl:'html/hello.html'
+        })
+        .state('home.text2',{
+            url:'/text2?status&type&startAt&endAt&page',
+            templateUrl:'html/hello2.html',
+            controller:"get_list2"
+        })
+        .state('home.add',{
+            url:'/add_page?page&title&status&img&content&url&industry&type&change&id',
+            templateUrl:'html/add_page.html',
+            controller:"add_page"
         })
     });
