@@ -1,0 +1,100 @@
+<div id="main">
+    <div id="add_page">
+        <div id="add_head">
+            <span><b>新增Article</b></span>
+        </div>
+        <div id="add_main">
+            <form name="myForm">
+                <div class="al_item">
+                    <b>标&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;题</b>
+                    <input id="title" type="text" class="input2" name="title" ng-model="title"  required placeholder="请输入标题" >
+                    <span style="color:red;" ng-show="myForm.title.$dirty ">
+                        <span ng-show="myForm.title.$error.required">标题是必填项</span>
+                    </span>
+                </div>
+
+                <div class="al_item">
+                    <b>类&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;型</b>
+                    <select id="select"
+                            ng-model="type"
+                            ng-options="x.value as x.text for x in type_my"
+                              ng-change ="industryshow() " >
+                        <option value="" select hidden>请选择类型</option>
+                    </select>
+                    <select id="select2"
+                            ng-model="type2"
+                            ng-options="x.value as x.text for x in industry"
+                            ng-class="{'A':isA,'B':isB}"
+                    >
+                        <option value="" select hidden>请选择类型</option>
+                    </select>
+                </div>
+                <div class="al_item">
+                    <b>说&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;明</b>
+                </div>
+
+                <div id="editor" class="editor_class">
+                    <div id="content"></div>
+                </div>
+                <div class="al_item">
+                    <b>跳转链接</b>
+                    <input style="margin-left: 36px; !important;" type="text"  class="input2"  name="url_1"  ng-model="url_1" placeholder="跳转链接" required >
+                    <span style="color:red;" ng-show="myForm.url_1.$dirty">
+                        <span ng-show="myForm.url_1.$error.required">标题是必填项</span>
+                    </span>
+                </div>
+                <div class="al_item">
+                    <b>配图</b>
+                    <a href="javascript:" class="file">选择文件
+                        <input onchange="angular.element(this).scope().imgshow(this)"  type="file" name="screenshot1" id="1"  >
+                    </a>
+                </div>
+                <img  ng-src="{{img}}"  id="portrait1">
+                <div class="al_item">
+                    <table style="margin-left: 99px">
+                        <tr>
+                            <th><b>文件名</b></th>
+                            <th><b>上传进度</b></th>
+                            <th><b>文件大小</b></th>
+                            <th><b>操作</b></th>
+                        </tr>
+                        <tr>
+                            <th>{{img_name}}</th>
+                            <th>
+                                <progress max="100" ng-model="progress">
+                                </progress>
+                            </th>
+                            <th>
+                                {{size}}
+                            </th>
+                            <th>
+                                <div ng-click="upload()" class="add_pic" style="background: #0088CC;font-weight: normal;margin:0 ;!important;">上传</div>
+                            </th>
+                        </tr>
+                    </table>
+                </div>
+                <div class="al_item">
+                    <div class="add_pic"
+                         ng-disabled="myForm.title.$dirty ||  myForm.content.$dirty || myForm.url_1.$dirty"
+                         style="background-color:#ffa500 ;margin-left: 96px;!important;"
+                         ng-click="draft(title,type,type2,content,url_1)"
+                    >
+                        存为草稿
+                    </div>
+                    <div class="add_pic"   style="background-color:#008000; margin-left: 10px;!important;"
+                         ng-click="upline(title,type,type2,content,url_1)"
+                    >立即上线</div>
+                    <div class="add_pic" ng-click="cancel()"   style="background-color:#bb3300; margin-left: 400px;!important;">取消</div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div id="giaogiao">
+        <div class="giaocenter">
+        </div>
+    </div>
+</div>
+
+
+

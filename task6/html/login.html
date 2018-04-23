@@ -1,0 +1,32 @@
+
+<div class="main">
+    <div id="sin">
+        <span id="text">
+            后台登陆入口
+        </span>
+        <input
+                class="sin_1"
+                type="text"
+                id="sin_in"
+                ng-minlength="5"
+                ng-maxlength="11"
+                ng-model="params.name"
+                required
+                placeholder="请输入账号" >
+
+
+        <input class="sin_1"
+               type="password"
+               id="password"
+               value=""
+               placeholder="请输入密码"
+               ng-model="params.pwd"
+               ng-minlength="5"
+               ng-maxlength="11"
+        >
+        <div
+                id="on"
+                ng-click="login()"
+        >登陆</div>
+    </div>
+</div>

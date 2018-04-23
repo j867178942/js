@@ -1,0 +1,32 @@
+<main>
+    <div class="bar"   >
+        <div id="title_luo"  ui-sref="home.text"   >
+            萝卜多后台管理系统
+        </div>
+        <div class="bar_1">信息管理</div>
+        <div class="bar_1" id="art"   ng-click="hid1()"     >Article管理</div>
+        <div id = "Article_list" ui-sref="home.text2"    ng-hide="Article1"  >
+            <!--公司视图-->
+            Article列表
+        </div>
+        <div class="bar_1"  >人才管理</div>
+        <!--人才管理这放的是公司的页面-->
+        <div class="bar_1">推荐管理</div>
+        <div class="bar_1">后台管理</div>
+        <div class="bar_1">用户管理</div>
+        <div class="bar_1">内容管理</div>
+    </div>
+    <div id="right">
+        <div id ="title_right">
+            <span>超级管理员</span>
+            <span id="admin">admin</span>
+            <div id="sign_out">
+                <a href ng-click="logout()">退出</a>
+            </div>
+        </div>
+        <div id="view_right" ui-view >
+            <!--这里是视图！！！-->
+            <!--<span style="margin-left: 50px;font-size: 30px">Welcome</span>-->
+        </div>
+    </div>
+</main>
