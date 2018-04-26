@@ -107,3 +107,6 @@ th{
     height: 220px;
     width: 800px;
 }
+.disabled{
+    cursor: not-allowed;
+}

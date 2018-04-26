@@ -111,6 +111,9 @@ app.controller('add_page',function ($scope,$state,$http,$stateParams,$httpParamS
         }
     };
     $scope.draft = function (title,type,type2,content,url_1) {
+        if( title ==="" || type ==="" || url_1 ===""){
+
+        }
         if(parseInt($scope.change) ===10000){
             if(confirm("确定存为草稿么？")){
                 var c  = "/carrots-admin-ajax/a/u/article/"+$scope.id ;
@@ -210,6 +213,59 @@ app.controller('add_page',function ($scope,$state,$http,$stateParams,$httpParamS
         }else {
             $scope.isA = true ;
             $scope.isB = false   ;
+        }
+    }else {
+    }
+    $scope.title_error = "";
+    $scope.type2_error = "" ;
+    $scope.url_error = "" ;
+    $scope.$watch("title",function (newValue,oldValue) {
+        if(oldValue !== newValue){
+            if(newValue == undefined){
+                $scope.title_error = "标题不能为空";
+            }else if(newValue.length < 8){
+                $scope.title_error = "不能小于8位";
+            }else {
+                $scope.title_error = "" ;
+            }
+        }
+    });
+    $scope.$watch("type",function (newValue,oldValue) {
+        if(oldValue !== newValue){
+            if(newValue == undefined){
+                $scope.type_error = "请选择类型" ;
+            }else if($scope.type === 3){
+                $scope.$watch("type2",function (newValue,oldValue){
+                    if(oldValue !== newValue){
+                        if (newValue == undefined){
+                            $scope.type2_error = "请选择类型2";
+                        }else {
+                            $scope.type2_error = "" ;
+                        }
+                    }
+                })
+            }
+        }
+    });
+    $scope.$watch("url_1",function (newValue,oldValue) {
+        if(newValue !==oldValue){
+            var regex =  /^http(s)?:\/\/([\w-]+\.)+[\w-]+(\/[\w- ./?%&=]*)?$/;
+            if (newValue == undefined){
+                $scope.url_error = "请输入链接";
+            }else if( !(regex.test(newValue))) {
+                $scope.url_error ="请输入正确的链接";
+            }else {
+                $scope.url_error = "" ;
+            }
+        }
+    });
+    function all_change() {
+        if( $scope.title_error  =="" & $scope.url_error =="" & $scope.type_error ==""){
+                $scope.isSubmitted = false ;
+                $scope.isf = false ;
+        }else {
+            $scope.isSubmitted = true ;
+            $scope.isf = true ;
         }
     }
 }) ;

@@ -8,8 +8,8 @@
                 <div class="al_item">
                     <b>标&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;题</b>
                     <input id="title" type="text" class="input2" name="title" ng-model="title"  required placeholder="请输入标题" >
-                    <span style="color:red;" ng-show="myForm.title.$dirty ">
-                        <span ng-show="myForm.title.$error.required">标题是必填项</span>
+                    <span style="color:red;">
+                        <span ng-model="title_error">{{title_error}}</span>
                     </span>
                 </div>
 
@@ -18,7 +18,7 @@
                     <select id="select"
                             ng-model="type"
                             ng-options="x.value as x.text for x in type_my"
-                              ng-change ="industryshow() " >
+                            ng-change ="industryshow() " >
                         <option value="" select hidden>请选择类型</option>
                     </select>
                     <select id="select2"
@@ -39,8 +39,8 @@
                 <div class="al_item">
                     <b>跳转链接</b>
                     <input style="margin-left: 36px; !important;" type="text"  class="input2"  name="url_1"  ng-model="url_1" placeholder="跳转链接" required >
-                    <span style="color:red;" ng-show="myForm.url_1.$dirty">
-                        <span ng-show="myForm.url_1.$error.required">标题是必填项</span>
+                    <span style="color:red;">
+                        <span ng-model="url_error" >{{url_error}}</span>
                     </span>
                 </div>
                 <div class="al_item">
@@ -74,16 +74,22 @@
                     </table>
                 </div>
                 <div class="al_item">
-                    <div class="add_pic"
-                         ng-disabled="myForm.title.$dirty ||  myForm.content.$dirty || myForm.url_1.$dirty"
-                         style="background-color:#ffa500 ;margin-left: 96px;!important;"
-                         ng-click="draft(title,type,type2,content,url_1)"
+                    <input  class="add_pic"
+                            type="submit"
+                            ng-disabled="isSubmitted"
+                            ng-class="{'disabled':isf,'abled':isD}"
+                            style="background-color:#ffa500 ;margin-left: 96px;!important;"
+                            ng-click="draft(title,type,type2,content,url_1)"
+
+                            value = "存为草稿"
                     >
-                        存为草稿
-                    </div>
-                    <div class="add_pic"   style="background-color:#008000; margin-left: 10px;!important;"
-                         ng-click="upline(title,type,type2,content,url_1)"
-                    >立即上线</div>
+                    <input class="add_pic"
+                           type="submit"
+                           style="background-color:#008000; margin-left: 10px;!important;"
+                           ng-click="upline(title,type,type2,content,url_1)"
+                           ng-disabled="isSubmitted"
+                           ng-class="{'disabled':isf,'abled':isD}"
+                           value="立即上线">
                     <div class="add_pic" ng-click="cancel()"   style="background-color:#bb3300; margin-left: 400px;!important;">取消</div>
                 </div>
             </form>
