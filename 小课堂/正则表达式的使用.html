@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<!-- saved from url=(0087)https://ptteng.github.io/WEB/ppt/js-05-How-to-use-regular-expressions-2018-3-1.html#/13 -->
+<html class=" js no-mobile desktop no-ie chrome chrome66 web-section ppt-section gradient rgba opacity textshadow multiplebgs boxshadow borderimage borderradius cssreflections csstransforms csstransitions no-touch no-retina fontface domloaded w-1366 gt-240 gt-320 gt-480 gt-640 gt-768 gt-800 gt-1024 gt-1280 lt-1440 lt-1680 lt-1920 no-portrait landscape" id="js-05-how-to-use-regular-expressions-2018-3-1-page"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>葡萄藤PPT</title>
+
+    <link rel="stylesheet" href="./葡萄藤PPT_files/reveal.css">
+
+    <!-- PPT主题，可以在/css/reveal/theme/中选择其他主题，目前暂时只能使用该模板 -->
+    <link rel="stylesheet" href="./葡萄藤PPT_files/ptt.css">
+
+    <!-- syntax highlighting 代码高亮主题 -->
+    <link rel="stylesheet" href="./葡萄藤PPT_files/zenburn.css">
+    <style>
+        .text-justify{
+            text-align: justify;
+        }
+    </style>
+    <!-- 打印和PDF输出样式 -->
+    <script>
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match( /print-pdf/gi ) ? '../css/reveal/print/pdf.css' : '../css/reveal/print/paper.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+    </script><link rel="stylesheet" type="text/css" href="./葡萄藤PPT_files/paper.css"><script type="text/javascript" src="./葡萄藤PPT_files/marked.js.下载"></script><script type="text/javascript" src="./葡萄藤PPT_files/markdown.js.下载"></script><script type="text/javascript" src="./葡萄藤PPT_files/notes.js.下载"></script><script type="text/javascript" src="./葡萄藤PPT_files/highlight.js.下载"></script>
+</head>
+<body>
+<img src="./葡萄藤PPT_files/logo.png" alt="" usemap="#pttmap" class="base-logo">
+<map name="pttmap">
+    <area shape="rect" coords="0,0,276,58" href="http://www.jnshu.com/" alt="" target="_blank">
+</map>
+<div class="reveal slide center" role="application" data-transition-speed="default" data-background-transition="fade">
+    <div class="slides" style="width: 960px; height: 700px; left: 50%; top: 50%; bottom: auto; right: auto; transform: translate(-50%, -50%) scale(0.786857);">
+        <section hidden="" aria-hidden="true" class="past" style="top: 330px; display: none;">
+            <h2>【js-5】如何使用正则表达式？</h2>
+            <h3>深圳分院小课堂
+            <p>分享人：金立剑</p>
+        </h3></section>
+        <section hidden="" aria-hidden="true" class="past" style="top: 330px; display: none;">
+            <p>目录</p>
+            <p>1.背景介绍</p>
+            <p>2.知识剖析</p>
+            <p>3.常见问题</p>
+            <p>4.解决方案</p>
+            <p>5.编码实战</p>
+            <p>6.扩展思考</p>
+            <p>7.参考文献</p>
+            <p>8.更多讨论</p>
+        </section>
+        <section hidden="" aria-hidden="true" class="past" style="top: 330px; display: none;">
+            <h3>1.背景介绍</h3>
+        </section>
+        <section style="text-align: left; top: 330px; display: none;" hidden="" aria-hidden="true" class="past">
+            <h4 style="text-align: center">什么是正则表达式？</h4>
+            <p>正则表达式（英语：Regular Expression，在代码中常简写为regex、regexp或RE）使用单个字符串来描述、匹配一系列符合某个句法规则的字符串搜索模式。搜索模式可用于文本搜索和文本替换。</p>
+            <p>正则表达式是由一个字符序列形成的搜索模式。当你在文本中搜索数据时，你可以用搜索模式来描述你要查询的内容。正则表达式可以是一个简单的字符，或一个更复杂的模式。正则表达式可用于所有文本搜索和文本替换的操作。</p>
+            <p>正则表达式中包含三种元素分别为：量词、元字符、修饰符。</p>
+        </section>
+        <section hidden="" aria-hidden="true" class="past" style="top: 330px; display: none;">
+            <h3>2.知识剖析</h3>
+        </section>
+        <section style="text-align: left; top: 330px; display: none;" hidden="" aria-hidden="true" class="past">
+        <h4 style="text-align: center">如何使用正则表达式</h4>
+        <pre>                            
+            <code class="hljs typescript">
+                语法
+                /正则表达式主体/修饰符(可选)
+                其中修饰符是可选的。
+
+                举例：
+                方式一：直接量语法
+                <span class="hljs-keyword">var</span> test = <span class="hljs-regexp">/jnshu/</span>;
+                <span class="hljs-keyword">var</span> test = <span class="hljs-regexp">/jnshu/i</span>;
+                方式二：创建 <span class="hljs-built_in">RegExp</span> 对象的语法
+                <span class="hljs-keyword">var</span> test = <span class="hljs-keyword">new</span> <span class="hljs-built_in">RegExp</span>(<span class="hljs-string">"jnshu"</span>);
+                <span class="hljs-keyword">var</span> test = <span class="hljs-keyword">new</span> <span class="hljs-built_in">RegExp</span>(<span class="hljs-string">"jnshu"</span>,<span class="hljs-string">"i"</span>);
+            </code>
+        </pre>
+        </section>
+        <section style="text-align: left; top: 330px; display: none;" hidden="" aria-hidden="true" class="past">
+            <h4 style="text-align: center">test()方法</h4>
+            test() 方法是一个正则表达式方法。<br>
+            test() 方法用于检测一个字符串是否匹配某个模式，如果字符串中含有匹配的文本，则返回 true，否则返回 false。
+             <pre>                            
+                <code class="hljs elixir">
+/<span class="hljs-number">123456</span>/.test(<span class="hljs-string">"12345"</span>);            <span class="hljs-regexp">//</span> <span class="hljs-keyword">false</span>
+/<span class="hljs-number">123456</span>/.test(<span class="hljs-string">"123456"</span>);           <span class="hljs-regexp">//</span> <span class="hljs-keyword">true</span>
+/<span class="hljs-number">123456</span>/.test(<span class="hljs-string">"x123456y"</span>);         <span class="hljs-regexp">//</span> <span class="hljs-keyword">true</span>        只要包含了指定的字符串，则为<span class="hljs-keyword">true</span>
+                </code>
+            </pre>
+        </section>
+        <section hidden="" aria-hidden="true" class="past" style="top: 330px; display: none;">
+            <h4>修饰符</h4>
+            修饰符是影响整个正则规则的特殊符号，会对匹配结果和部分内置函数行为产生不同的效果。
+            <pre>                            
+                <code class="hljs stylus">
+        <span class="hljs-selector-tag">i</span>   执行对大小写不敏感的匹配。
+        g   执行全局匹配（查找所有匹配而非在找到第一个匹配后停止）。
+        m   执行多行匹配。
+        y   执行“粘性”搜索,匹配从目标字符串的当前位置开始，可以使用y标志。
+                </code>
+            </pre>
+        </section>
+        <section hidden="" aria-hidden="true" class="stack past" style="top: 330px; display: none;">
+             <section style="top: 330px; display: none;">
+                <h4>元字符</h4>
+                元字符是使用正则表达式不同于普通字符的地方，也是正则表达式能够发挥强大作用、具有强大表达能力的法宝。<br>
+                <h4>那么什么是元字符呢？</h4>
+                <b>元字符是一些在正则表达式中有特殊用途、不代表它本身字符意义的一组字符。</b>利用元字符，我们可以控制字符串匹配的方式，例如：只在每一行的开始或结束位置匹配指定的模式，匹配固定距离的子串，匹配不出现的字符等等。
+            </section>
+            <section class="future" aria-hidden="true" style="top: 330px; display: none;">
+                <h4>常用元字符</h4>
+                <pre>                    <code class="hljs cos" style="max-height: 450px">
+\<span class="hljs-keyword">d</span> : 匹配数字      等价于[<span class="hljs-number">0</span>-<span class="hljs-number">9</span>]
+\<span class="hljs-keyword">D</span> : 匹配非数字    等价于[^\<span class="hljs-keyword">d</span>]
+\<span class="hljs-keyword">s</span> : 匹配空白符
+\<span class="hljs-keyword">S</span> : 匹配非空白符  等价于[^\<span class="hljs-keyword">s</span>]
+\<span class="hljs-keyword">w</span> : 用于匹配字母，数字或下划线字符（例如程序中的变量字符）  等价于[A-Za-z0-<span class="hljs-number">9</span>_] 
+\<span class="hljs-keyword">W</span> : 用于匹配所有与\<span class="hljs-keyword">w</span>不匹配的字符   等价于[^\<span class="hljs-keyword">w</span>]
+举例：
+/\<span class="hljs-keyword">d</span>/.test(<span class="hljs-string">"123"</span>);              <span class="hljs-comment">// true</span>
+/\<span class="hljs-keyword">d</span>/.test(<span class="hljs-string">"1ab"</span>);              <span class="hljs-comment">// true</span>
+/\<span class="hljs-keyword">D</span>/.test(<span class="hljs-string">"1ab"</span>);              <span class="hljs-comment">// true</span>
+/\<span class="hljs-keyword">D</span>/.test(<span class="hljs-string">"112"</span>);              <span class="hljs-comment">// false</span>
+
+字符类
+匹配一类字符中的&lt;span style=<span class="hljs-string">"color:red"</span>&gt;一个&lt;/span&gt;
+[abc]: a或b或c 
+[<span class="hljs-number">0</span>-<span class="hljs-number">9</span>]: 一个数字
+[^<span class="hljs-number">0</span>-<span class="hljs-number">9</span>]: 非数字的一个字符
+[a-z]: 一个字母
+.    : 任一字符（换行除外）
+
+多选分支
+或
+/thi(c|n)<span class="hljs-keyword">k</span>/    ===    /thi[cn]<span class="hljs-keyword">k</span>/        <span class="hljs-comment">// thick或think</span>
+
+锚点
+匹配一个位置
+^ :起始位置
+$ :结尾位置
+\b :单词边界
+举例：
+/<span class="hljs-symbol">^http</span>:/       /<span class="hljs-symbol">^http</span>:/.test(<span class="hljs-string">"http://www.jnshu.com"</span>)   <span class="hljs-comment">//true </span>
+/\.jpg$/       /\.jpg$/.test(<span class="hljs-string">"1.jpg"</span>)                  <span class="hljs-comment">// true</span>
+/\bis\b/       /\bis\b/.test(<span class="hljs-string">"this is tom"</span>)            <span class="hljs-comment">// true</span>
+
+
+                    </code>
+                </pre>
+            </section>
+            <section class="future" aria-hidden="true" style="top: 330px; display: none;">
+                <h4>如果要在正则表达式中使用元字符本身的话该怎么办？</h4>
+            </section>
+            <section class="future" aria-hidden="true" style="top: 330px; display: none;">
+                <h4>转义符</h4>
+                使用的方法是把一个反斜杠（\）放在元字符前面，这样元字符就失去了特殊的意义，还原会它本身代表的字符意义。
+                <pre>                    <code class="hljs groovy">
+举例：
+<span class="hljs-regexp">/http:\/\/</span><span class="hljs-regexp">/     /</span><span class="hljs-string">http:</span>\<span class="hljs-regexp">/\/</span><span class="hljs-regexp">/.test("http:/</span><span class="hljs-regexp">/www.jnshu.com")        /</span>/ <span class="hljs-literal">true</span>
+                    </code>
+                </pre>
+            </section>
+        </section>
+        <section hidden="" aria-hidden="true" class="stack past" style="top: 330px; display: none;">
+            <section style="top: 330px; display: none;">
+                <h4>量词</h4>
+                <ol>正则表达式的量词分别是贪婪，惰性，支配性:
+                    <li>贪婪量词：先看整个字符串是不是一个匹配。如果没有发现匹配，
+           它去掉最后字符串中的最后一个字符，并再次尝试。</li>
+                    <li>惰性量词: 先看字符串中的第一个字母是不是一个匹配。如果单独
+           这一个字符还不够，就读入下一个字符，组成两个字符的字符串。
+           如果还是没有发现匹配，惰性量词继续从字符串添加字符
+           直到发现一个匹配或者整个字符串都检查过也没有匹配。</li>
+                    <li>支配量词：只尝试匹配整个字符串。如果整个字符串不能产生匹配，不做
+           进一步尝试，支配量词其实简单的说，就是一刀切。</li>
+                </ol>
+                <b>惰性量词和贪婪量词的工作方式正好是相反的。</b>
+            </section>
+            <section class="future" aria-hidden="true" style="top: 330px; display: none;">
+                表示这3种量词：
+                <pre>                    <code class="hljs stata">
+ 贪   婪        惰   性       支   配               描   述
+    ？           ？？           ？+               零次或一次出现
+<span class="hljs-comment">    *            *？            *+                零次或多次出现</span>
+    +            +？            ++                一次或多次出现
+    {<span class="hljs-keyword">n</span>}          {<span class="hljs-keyword">n</span>}？          {<span class="hljs-keyword">n</span>}+              恰好<span class="hljs-keyword">n</span>次出现
+    {<span class="hljs-keyword">n</span>，<span class="hljs-keyword">m</span>}       {<span class="hljs-keyword">n</span>，<span class="hljs-keyword">m</span>}？       {<span class="hljs-keyword">n</span>，<span class="hljs-keyword">m</span>}+           至少<span class="hljs-keyword">n</span>次，最多<span class="hljs-keyword">m</span>次出现
+    {<span class="hljs-keyword">n</span>，}        {<span class="hljs-keyword">n</span>，}？        {<span class="hljs-keyword">n</span>，}+            至少<span class="hljs-keyword">n</span>次出现
+
+举例：
+/\<span class="hljs-keyword">d</span>*/.<span class="hljs-keyword">test</span>(<span class="hljs-string">"abc"</span>)       <span class="hljs-comment">// true     数字可以出现0次到无穷次，所以是对的</span>
+/\<span class="hljs-keyword">d</span>+/.<span class="hljs-keyword">test</span>(<span class="hljs-string">"abc"</span>)       <span class="hljs-comment">// false    数字至少出现1次到无穷次，所以是错的</span>
+/\<span class="hljs-keyword">d</span>+/.<span class="hljs-keyword">test</span>(<span class="hljs-string">"1abc"</span>)      <span class="hljs-comment">// true     数字至少出现1次到无穷次，所以是对的</span>
+/https?:/.<span class="hljs-keyword">test</span>(<span class="hljs-string">"http://www.jnshu.com"</span>)       <span class="hljs-comment">// true     s可以出现0次到1次，所以是对的</span>
+/https?:/.<span class="hljs-keyword">test</span>(<span class="hljs-string">"https://www.jnshu.com"</span>)      <span class="hljs-comment">// true     </span>
+/https?:/.<span class="hljs-keyword">test</span>(<span class="hljs-string">"httpss://www.jnshu.com"</span>)     <span class="hljs-comment">// false    s后面是：所以是错的</span>
+                    </code>
+                </pre>
+            </section>
+            <section class="future" aria-hidden="true" style="top: 330px; display: none;">
+                <h4 style="text-align: center">贪婪匹配原则</h4>
+<p style="text-align: left">在JavaScript中，正则表达式进行匹配时默认使用的是贪婪匹配原则，即尽可能多的匹配字符串。例如，使用正则表达式/1{3,4}/来匹配字符串1111111，得到的结果为：1111和111。即先匹配4个字符，然后才匹配3个字符。</p>
+            </section>
+        </section>
+        <section hidden="" aria-hidden="true" class="past" style="top: 330px; display: none;">
+        <h3>3.常见问题</h3>
+        </section>
+        <section hidden="" aria-hidden="true" class="past" style="top: 287px; display: block;">
+            如何利用正则表达式获取URL中各部分的值？
+        </section>
+        <section hidden="" aria-hidden="true" class="past" style="top: 267px; display: block;">
+            <h3>4.解决方案</h3>
+        </section>
+        <section class="stack present" style="top: 0px; display: block;">
+            <section class="present" style="top: 158.5px; display: block;">
+                <pre>                    <code class="hljs gherkin">
+            http://www.jnshu.com:8080/index.html?user=chenapo&amp;age=99<span class="hljs-comment">#home</span>
+              |<span class="hljs-string">          </span>|<span class="hljs-string">         </span>|<span class="hljs-string">       </span>|<span class="hljs-string">             </span>|<span class="hljs-string">            </span>|
+            protocol     |<span class="hljs-string">         </span>|<span class="hljs-string">       </span>|<span class="hljs-string">             </span>|<span class="hljs-string">            </span>|
+                      hostname    port     |<span class="hljs-string">             </span>|<span class="hljs-string">            </span>|
+                          \        /    pathname        search        hash
+                             host                        
+                    </code>
+                </pre>
+            </section>
+            <section class="future" aria-hidden="true" hidden="" style="top: 127px; display: block;">
+                <h4>捕获</h4>
+                保存匹配到的字符串，日后再用
+                <pre>                    <code class="hljs gcode">
+            <span class="hljs-comment">()</span>   :捕获           /<span class="hljs-comment">(jnshu)</span>/
+            <span class="hljs-comment">(?:)</span> :不捕获         /<span class="hljs-comment">(?:jnshu)</span>/
+                    </code>
+                </pre>
+                <a href="https://ptteng.github.io/WEB/demo/js-05-How-to-use-regular-expressions-2018-3-1/demo.html" target="_blank">Demo</a>
+            </section>
+        </section>
+        <section hidden="" aria-hidden="true" class="future" style="top: 267px; display: block;">
+            <h3>5.编码实战</h3>
+        </section>
+        <section hidden="" aria-hidden="true" class="future" style="top: 267px; display: block;">
+            <h3>6.扩展思考</h3>
+        </section>
+        <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+            <h4>常用正则表达式有哪些？</h4>
+            <a href="http://www.cnblogs.com/zfc2201/archive/2012/12/18/2824107.html" target="_blank">链接</a>
+        </section>
+        <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+            <h3>7.参考文献</h3>
+        </section>
+        <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+            <h4>参考文献：</h4>
+            <a href="http://www.runoob.com/jsref/jsref-obj-regexp.html" target="_blank">菜鸟教程</a><br>
+            <a href="https://www.cnblogs.com/yangxiao24/archive/2007/12/30/1020890.html" target="_blank">正则表达式的量词解释</a>
+        </section>
+        <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+            <h3>8.更多讨论</h3>
+        </section>
+        <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+            <h4>感谢观看</h4>
+            <p>by 金立剑</p>
+        </section>
+    </div>
+<div class="backgrounds"><div class="slide-background past" style="display: none;"></div><div class="slide-background past" style="display: none;"></div><div class="slide-background past" style="display: none;"></div><div class="slide-background past" style="display: none;"></div><div class="slide-background past" style="display: none;"></div><div class="slide-background past" style="display: none;"></div><div class="slide-background past" style="display: none;"></div><div class="slide-background past" style="display: none;"></div><div class="slide-background stack past" style="display: none;"><div class="slide-background present" style="display: none;"></div><div class="slide-background future" style="display: none;"></div><div class="slide-background future" style="display: none;"></div><div class="slide-background future" style="display: none;"></div></div><div class="slide-background stack past" style="display: none;"><div class="slide-background present" style="display: none;"></div><div class="slide-background future" style="display: none;"></div><div class="slide-background future" style="display: none;"></div></div><div class="slide-background past" style="display: none;"></div><div class="slide-background past" data-loaded="true" style="display: block;"></div><div class="slide-background past" data-loaded="true" style="display: block;"></div><div class="slide-background stack present" data-loaded="true" style="display: block;"><div class="slide-background present" data-loaded="true" style="display: block;"></div><div class="slide-background future" data-loaded="true" style="display: block;"></div></div><div class="slide-background future" data-loaded="true" style="display: block;"></div><div class="slide-background future" data-loaded="true" style="display: block;"></div><div class="slide-background future" style="display: none;"></div><div class="slide-background future" style="display: none;"></div><div class="slide-background future" style="display: none;"></div><div class="slide-background future" style="display: none;"></div><div class="slide-background future" style="display: none;"></div></div><div class="progress" style="display: block;"><span style="width: 945.692px;"></span></div><aside class="controls" style="display: block;"><button class="navigate-left enabled" aria-label="previous slide"></button><button class="navigate-right enabled" aria-label="next slide"></button><button class="navigate-up" aria-label="above slide"></button><button class="navigate-down enabled" aria-label="below slide"></button></aside><div class="slide-number" style="display: none;"></div><div class="speaker-notes" data-prevent-swipe=""></div><div class="pause-overlay"></div><div id="aria-status-div" aria-live="polite" aria-atomic="true" style="position: absolute; height: 1px; width: 1px; overflow: hidden; clip: rect(1px, 1px, 1px, 1px);">
+                                    
+            http://www.jnshu.com:8080/index.html?user=chenapo&amp;age=99#home
+              |          |         |       |             |            |
+            protocol     |         |       |             |            |
+                      hostname    port     |             |            |
+                          \        /    pathname        search        hash
+                             host                        
+                    
+                
+            </div></div>
+
+<script src="./葡萄藤PPT_files/head.min.js.下载"></script>
+<script src="./葡萄藤PPT_files/reveal.js.下载"></script>
+http://www.ruanyifeng.com/blog/2012/06/internet_protocol_suite_part_ii.html
+<script>
+    // 以下为常见配置属性的默认值
+    // {
+    //  controls: true, // 是否在右下角展示控制条
+    //  progress: true, // 是否显示演示的进度条
+    //  slideNumber: false, // 是否显示当前幻灯片的页数编号，也可以使用代码slideNumber: 'c / t' ，表示当前页/总页数。
+    //  history: false, // 是否将每个幻灯片改变加入到浏览器的历史记录中去
+    //  keyboard: true, // 是否启用键盘快捷键来导航
+    //  overview: true, // 是否启用幻灯片的概览模式，可使用"Esc"或"o"键来切换概览模式
+    //  center: true, // 是否将幻灯片垂直居中
+    //  touch: true, // 是否在触屏设备上启用触
+    Reveal.initialize({
+        history: true,
+        dependencies: [
+            {src: '../plugin/markdown/marked.js'},
+            {src: '../plugin/markdown/markdown.js'},
+            {src: '../plugin/notes/notes.js', async: true},
+            {
+                src: '../plugin/highlight/highlight.js', async: true, callback: function () {
+                hljs.initHighlightingOnLoad();
+            }
+            }
+        ]
+    });
+</script>
+
+
+</body></html>
